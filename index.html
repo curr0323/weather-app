@@ -22,78 +22,93 @@
   </head>
   <body>
     <div class="container">
-      <form class="row g-3" id="city-search">
-        <div class="col-auto">
-          <label for="inputCity" class="visually-hidden">City</label>
-          <input
-            type="text"
-            class="form-control"
-            id="input-city"
-            placeholder="Enter city here"
-          />
-        </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-primary mb-3" id="submit-button">
-            Submit
-          </button>
-        </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-primary mb-3" id="current-loc">
-            Use Current Location
-          </button>
-        </div>
-      </form>
+      <div class="" weather-app-wrapper>
+        <form class="row g-3" id="city-search">
+          <div class="col-auto">
+            <label for="inputCity" class="visually-hidden">City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="input-city"
+              placeholder="Enter city here"
+            />
+          </div>
+          <div class="col-auto">
+            <button
+              type="submit"
+              class="btn btn-primary mb-3"
+              id="submit-button"
+            >
+              Submit
+            </button>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3" id="current-loc">
+              Use Current Location
+            </button>
+          </div>
+        </form>
 
-      <h1 id="current-city">Minneapolis</h1>
-      <h2 id="current-temp">67°</h2>
-      <h3 id="current-time"></h3>
+        <div class="col-6">
+          <h1 id="current-city">Minneapolis</h1>
+          <h2 id="current-temp">67 <span class="units">°F|C</span></h2>
+          <h3 id="current-time"></h3>
+        </div>
 
-      <div class="row">
-        <div class="col">
-          <div class="card" style="width: 10rem">
-            <div class="card-body">
-              <h5 class="card-title">Sunday</h5>
-              <p class="card-text">77° ☀️</p>
+        <div class="col-6">
+          <ul>
+            <li>Humidity: <span id="humidity"></span>%</li>
+            <li>Wind: <span id="wind"></span> m/h</li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="card" style="width: 10rem">
+              <div class="card-body">
+                <h5 class="card-title">Sunday</h5>
+                <p class="card-text">77° ☀️</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 10rem">
+              <div class="card-body">
+                <h5 class="card-title">Monday</h5>
+                <p class="card-text">78° ☀️</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 10rem">
+              <div class="card-body">
+                <h5 class="card-title">Tuesday</h5>
+                <p class="card-text">82° ☀️</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 10rem">
+              <div class="card-body">
+                <h5 class="card-title">Wednesday</h5>
+                <p class="card-text">86° ☀️</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 10rem">
+              <div class="card-body">
+                <h5 class="card-title">Thursday</h5>
+                <p class="card-text">88° ☀️</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card" style="width: 10rem">
-            <div class="card-body">
-              <h5 class="card-title">Monday</h5>
-              <p class="card-text">78° ☀️</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="width: 10rem">
-            <div class="card-body">
-              <h5 class="card-title">Tuesday</h5>
-              <p class="card-text">82° ☀️</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="width: 10rem">
-            <div class="card-body">
-              <h5 class="card-title">Wednesday</h5>
-              <p class="card-text">86° ☀️</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="width: 10rem">
-            <div class="card-body">
-              <h5 class="card-title">Thursday</h5>
-              <p class="card-text">88° ☀️</p>
-            </div>
-          </div>
-        </div>
+        <p>
+          <a href="https://github.com/curr0323/weather-app">Open Source Code</a>
+          by Shannon Currier
+        </p>
       </div>
-      <p>
-        <a href="https://github.com/curr0323/weather-app">Open Source Code</a>
-        by Shannon Currier
-      </p>
     </div>
   </body>
 </html>
