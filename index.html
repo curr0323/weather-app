@@ -16,7 +16,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="src/index.js"></script>
     <link href="src/styles.css" rel="stylesheet" type="text/css" />
     <title>Wireframe</title>
   </head>
@@ -60,17 +59,17 @@
                 <h1 id="current-city">Minneapolis</h1>
                 <ul>
                   <li>Last updated: <span id="current-time"></span></li>
-                  <li id="description">Now</li>
+                  <li id="weather-desc"></li>
                 </ul>
               </div>
             </div>
 
             <div class="row">
               <div class="col-6">
-                <div class="d-flex weather-tempterature">
+                <div class="d-flex weather-temperature">
                   <img src="" alt="Clear" id="icon" />
                   <div>
-                    <strong id="temperature">67</strong>
+                    <strong id="current-temp">67</strong>
                     <span class="units"
                       ><a href="#" id="celsius-link" class="active">°C</a> |
                       <a href="#" id="fahrenheit-link">°F</a></span
@@ -80,7 +79,6 @@
               </div>
               <div class="col-6">
                 <ul>
-                  <li>Precipitation: <span id="precipitation"></span>%</li>
                   <li>Humidity: <span id="humidity"></span>%</li>
                   <li>Wind: <span id="wind"></span> m/h</li>
                 </ul>
@@ -137,5 +135,6 @@
         </p>
       </div>
     </div>
+    <script src="src/index.js"></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 //Get current day and time
 let now = new Date();
 
-let h3 = document.querySelector("h3");
+let currentTime = document.querySelector("#current-time");
 
 let hours = now.getHours();
 if (hours < 10) {
@@ -24,7 +24,7 @@ let days = [
 ];
 let day = days[now.getDay()];
 
-h3.innerHTML = `${day} ${hours}:${minutes}`;
+currentTime.innerHTML = `${day} ${hours}:${minutes}`;
 
 //Add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
 function changeCity(event) {
@@ -41,9 +41,24 @@ citySearch.addEventListener("submit", changeCity);
 function showTemperature(response) {
   let cityInput = document.querySelector("#input-city");
   let city = cityInput.value;
-  let temperature = Math.round(response.data.main.temp);
+
   let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = `${temperature}°C`;
+  let descriptionElement = document.querySelector("#weather-desc");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let iconElement = document.querySelector("#icon");
+
+  let temperature = Math.round(response.data.main.temp);
+
+  temperatureElement.innerHTML = `${temperature}`;
+  descriptionElement.innerHTML - response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = response.data.wind.speed;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 //call openweathermap api to overwrite temp
@@ -66,9 +81,24 @@ form.addEventListener("submit", search);
 function showCurrentTemperature(response) {
   let cityOutput = document.querySelector("#current-city");
   cityOutput.innerHTML = response.data.name;
-  let temperature = Math.round(response.data.main.temp);
+
   let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = `${temperature}°C`;
+  let descriptionElement = document.querySelector("#weather-desc");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let iconElement = document.querySelector("#icon");
+
+  let temperature = Math.round(response.data.main.temp);
+
+  temperatureElement.innerHTML = `${temperature}`;
+  descriptionElement.innerHTML - response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = response.data.wind.speed;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function showPosition(position) {
