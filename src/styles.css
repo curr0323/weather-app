@@ -75,6 +75,22 @@ li:first-letter {
   cursor: default;
 }
 
-.weather-temperature .active:hover {
+#celsius-link:link,
+#fahrenheit-link:link {
+  text-decoration: none;
+}
+
+#celsius-link:visited,
+#fahrenheit-link:visited {
+  text-decoration: none;
+}
+
+#celsius-link:hover,
+#fahrenheit-link:hover {
+  text-decoration: none;
+}
+
+#celsius-link:active,
+#fahrenheit-link:active {
   text-decoration: none;
 }

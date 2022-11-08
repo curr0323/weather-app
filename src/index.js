@@ -115,14 +115,18 @@ function displayFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#current-temp");
 
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
 function displayCelsius(event) {
   event.preventDefault();
-
   let temperatureElement = document.querySelector("#current-temp");
+
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celsiusTemp);
 }
 
