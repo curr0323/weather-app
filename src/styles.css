@@ -94,3 +94,12 @@ li:first-letter {
 #fahrenheit-link:active {
   text-decoration: none;
 }
+
+.weather-forecast {
+  text-align: center;
+  color: rgb(33, 33, 33);
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.5;
+}
