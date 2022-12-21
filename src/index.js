@@ -26,6 +26,14 @@ let day = days[now.getDay()];
 
 currentTime.innerHTML = `${day} ${hours}:${minutes}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 //Add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
 function changeCity(event) {
   event.preventDefault();
@@ -36,6 +44,40 @@ function changeCity(event) {
 
 let citySearch = document.querySelector("#city-search");
 citySearch.addEventListener("submit", changeCity);
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+    <div class="col-2">
+        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+        <img 
+            src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" 
+            alt="Clear" 
+        />
+        <div class="weather-forecast-temperature">
+            <span class="weather-forecast-temperature-max">${Math.round(
+              forecastDay.temp.max
+            )}°</span>
+            <span class="weather-forecast-temperature-min">${Math.round(
+              forecastDay.temp.min
+            )}°</span>
+        </div>
+    </div>
+  `;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 //function to get temperature for city that is input
 function showTemperature(response) {
@@ -59,6 +101,8 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coords);
 }
 
 //call openweathermap api to overwrite temp
@@ -73,6 +117,12 @@ function search(event) {
   event.preventDefault();
   let city = document.querySelector("#input-city").value;
   searchCity(city);
+}
+
+function getForecast(coordinates) {
+  let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showCurrentTemperature(response) {
@@ -96,6 +146,8 @@ function showCurrentTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coords);
 }
 
 function showPosition(position) {
@@ -132,6 +184,8 @@ function displayCelsius(event) {
 
 let celsiusTemp = null;
 
+displayForecast();
+
 let form = document.querySelector("#city-search");
 form.addEventListener("submit", search);
 
@@ -143,5 +197,3 @@ fahrenheitLink.addEventListener("click", displayFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius);
-
-search(Minneapolis);
