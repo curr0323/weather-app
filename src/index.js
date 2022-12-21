@@ -46,8 +46,9 @@ let citySearch = document.querySelector("#city-search");
 citySearch.addEventListener("submit", changeCity);
 
 function displayForecast(response) {
+  console.log(response.data);
   let forecast = response.data.daily;
-  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
@@ -102,7 +103,7 @@ function showTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-  getForecast(response.data.coords);
+  getForecast(response.data.coord);
 }
 
 //call openweathermap api to overwrite temp
@@ -121,7 +122,7 @@ function search(event) {
 
 function getForecast(coordinates) {
   let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -147,7 +148,7 @@ function showCurrentTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-  getForecast(response.data.coords);
+  getForecast(response.data.coord);
 }
 
 function showPosition(position) {
@@ -183,8 +184,6 @@ function displayCelsius(event) {
 }
 
 let celsiusTemp = null;
-
-displayForecast();
 
 let form = document.querySelector("#city-search");
 form.addEventListener("submit", search);
